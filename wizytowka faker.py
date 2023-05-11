@@ -7,25 +7,25 @@ class Base_contact:
         self.surname = surname 
         self.phone = phone 
         self.email_address = email_address
-    
-class Business_contact:
-    def __init__(self,name, surname, company, position, email_address,phone,business_phone):
-        self.name = name
-        self.surname = surname 
-        self.company = company 
-        self.oposition = position 
-        self.email_address = email_address
-        self.phone = phone
-        self.business_phone = business_phone
 
-class Address_book:
-    def __init__(self,name, surname, company, position, email_address):
+
+class Business_contact(Base_contact):
+    def __init__(self,name, surname,phone,email_address,company,position,business_phone):
         self.name = name
         self.surname = surname 
+        self.phone = phone
+        self.email_address = email_address 
+        self.oposition = position
         self.company = company 
-        self.oposition = position 
-        self.email_address = email_address        
-  
+        self.business_phone = business_phone     
+
+class Business_contact(Base_contact):
+    def __init__(self,position,company,business_phone,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        self.oposition = position
+        self.company = company
+        self.business_phone = business_phone
+        
     def __label_lenght__(self):
         return([len(self.name), len(self.surname)])
  
